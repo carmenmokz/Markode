@@ -30,11 +30,21 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        mWebView.loadUrl("http://beta.html5test.com/");
-        //mWebView.loadUrl("to http://www.html5rocks.com/");
+        //mWebView.loadUrl("http://beta.html5test.com/");
+        //mWebView.loadUrl("http://www.html5rocks.com/");
+        mWebView.loadUrl("http://www.youtube.com/");
 
         // Stop local links and redirects from opening in browser instead of WebView
         mWebView.setWebViewClient(new MyAppWebViewClient());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mWebView.canGoBack()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     /**
